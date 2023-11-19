@@ -1,0 +1,106 @@
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.5; /* 使其半透明来表示不可用状态 */
+}
+
+
+.upper-section {
+    width: 60%;               /* 设置宽度为页面的70% */
+    margin: auto;           /* 将section居中 */
+    background-color: #f5f5f5;  /* 浅灰色背景 */
+    border-radius: 15px;        /* 圆形边框 */
+    padding: 3%;
+    overflow: hidden;
+}
+
+.upper-section-body {
+    display: grid;                 /* 使用Grid布局 */
+    grid-template-columns: 1fr 1fr; /* 两列，每列相等宽度 */
+    gap: 2%;                     /* 列与列、行与行之间的间距 */
+    justify-content: center; 
+}
+
+.upper-img-container {
+    text-align: center;               /* 使图片和文本居中对齐 */
+    display: flex;                    /* 使图片和文本居中对齐 */
+    flex-direction: column;          /* 设置flex的方向为列 */
+    justify-content: center; 
+}
+
+.middle-section {
+    width: 100%;
+    margin: auto;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 3%;  /* 你可以根据需要调整这个值 */
+    overflow: hidden;
+}
+
+.middle-section-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2%;  /* 这个值也可以根据需要调整 */
+    justify-content: center;
+}
+
+.core-section-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2%;  /* 这个值也可以根据需要调整 */
+    justify-content: center;
+}
+
+.middle-img-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;  /* 增加底部外边距，确保文本有足够空间 */
+    overflow: visible;    /* 确保内容不会被裁剪 */
+}
+.middle-img-container-lower {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 90px;  /* 增加底部外边距，确保文本有足够空间 */
+    overflow: visible;    /* 确保内容不会被裁剪 */
+}
+
+.middle-img-container img {
+    width: 100%;
+    max-width: 100%;  /* 图片最大宽度不超过容器宽度 */
+    height: auto;     /* 图片高度自动调整以保持比例 */
+}
+
+
+.interpolation-image-upper {
+    max-width: 100%;             /* 限制图片最大宽度为90% */
+    height: auto;               /* 让图片高度自动适应 */
+    object-fit: cover;
+    margin: auto 0;
+}
+.upper-subtitle {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.is-bold-opt{
+    text-align: center;
+}
+
+.opt-column {
+    display: flex;
+    flex-direction: column;  /* 垂直堆叠子元素 */
+    justify-content: center; /* 垂直居中子元素 */
+    align-items: center;     /* 水平居中子元素 */
+    height: 100%;            /* 使column填满其父容器 */
+}
+
+.interpolation-image-opt {
+    max-width: 100%; /* 确保图片不超出其容器 */
+    padding: 2%;
+    height: auto;    /* 保持图片的原始纵横比 */
+    margin-bottom: 10px; /* 如果需要，给图片和文字之间添加一些空间 */
+}

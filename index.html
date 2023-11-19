@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffTactile</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/self-define.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DiffTactile: A Physics-based Differentiable Tactile Simulator for Contact-rich Robotic Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous authors</span>
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Under review at ICLR 2024</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdf/paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark disabled-link">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv (Soon)</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark disabled-link">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (Soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark disabled-link">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Soon)</span>
+                  </a>
+              </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="upper-section">
+  <div class="container is-max-desktop">
+    <div class="upper-section-body">
+        <!-- Surface Following GIF -->
+        <div class="upper-img-container">
+            <img src="./static/gifs/surface.gif" class="interpolation-image-upper" alt="Surface Following">
+            <p class="is-bold">Surface Following</p>
+        </div>
+
+        <!-- Box Opening GIF -->
+        <div class="upper-img-container">
+            <img src="./static/gifs/box.gif" class="interpolation-image-upper" alt="Box Opening">
+            <p class="is-bold">Box Opening</p>
+        </div>
+
+        <!-- Cable Manipulation GIF -->
+        <div class="upper-img-container">
+            <img src="./static/gifs/pbd.gif" class="interpolation-image-upper" alt="Cable Manipulation">
+            <p class="is-bold">Cable Manipulation</p>
+        </div>
+
+        <!-- Object Reposing GIF -->
+        <div class="upper-img-container">
+            <img src="./static/gifs/repose.gif" class="interpolation-image-upper" alt="Object reposing">
+            <p class="is-bold">Object reposing</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          We introduce DiffTactile, a physics-based and fully differentiable tactile simulation system designed to enhance robotic manipulation with dense and physically-accurate tactile feedback. In contrast to prior tactile simulators which primarily focus on manipulating rigid bodies and often rely on simplified approximations to model stress and deformations of materials in contact, DiffTactile emphasizes physics-based contact modeling with high fidelity, supporting simulations of diverse contact modes and interactions with objects possessing a wide range of material properties. 
+          </p>
+          <p>
+          Our system incorporates several key components, including a Finite Element Method (FEM) -based soft body model for simulating the sensing elastomer, a multi-material simulator for modeling diverse object types (such as elastic, plastic, cables) under manipulation, a penalty-based contact model for handling contact dynamics. The differentiable nature of our system facilitates gradient-based optimization for both 1) refining physical properties in simulation using real-world data, hence narrowing the sim-to-real gap, and 2) efficient learning of tactile-assisted grasping and contact-rich manipulation skills. Additionally, we introduce a method to infer the optical response of our tactile sensor to contact using an efficient pixel-based neural module. 
+          </p>
+          <p>
+          We anticipate that DiffTactile will serve as a useful platform for studying contact-rich manipulations, leveraging the benefits of dense tactile feedback and differentiable physics.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--  / Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experiments</h2>
+        <img src="./static/images/aad2.jpg"
+                 class="interpolation-image"
+                 alt="pixel-wise tactile marker mean squared errors"/>
+            <p class="is-bold">pixel-wise tactile marker mean squared errors</p>
+            <img src="./static/images/fig2.jpg"
+                 class="interpolation-image"
+                 alt="Metrics of tasks trained by different algorithms"/>
+            <p class="is-bold">Metrics of tasks trained by different algorithms</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">System Identification</h2>
+        <div class="content has-text-justified">
+          <p>
+            We show how we collect real world data and the predicted (yellow) and real (green) markers of three different trajectories.
+          </p>
+        </div>
+        <!-- Interpolating. -->
+
+        <div class="columns is-vcentered interpolation-panel">
+          <section class="middle-section">
+ 
+            <div class="container is-max-desktop">
+              
+              <div class="middle-section-body">
+                  <!-- Surface Following GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/press-slide-real.gif" class="interpolation-image-upper" alt="Surface Following">
+                      <p class="is-bold">Real Press-slide</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/press-twist-x-real.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Real Press-twist-x</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/press-twist-z-real.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Real Press-twist-z</p>
+                  </div>
+          
+                  <!-- Box Opening GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/press-slide-sim.gif" class="interpolation-image-upper" alt="Box Opening">
+                      <p class="is-bold">Press-slide markers</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/press-twist-x-sim.gif" class="interpolation-image-upper" alt="Box Opening">
+                    <p class="is-bold">Press-twist-x markers</p>
+                </div>
+                <div class="middle-img-container">
+                  <img src="./static/gifs/press-twist-z-sim.gif" class="interpolation-image-upper" alt="Box Opening">
+                  <p class="is-bold">Press-twist-z markers</p>
+              </div>
+
+          
+ 
+              </div>
+            </div>
+          </section>
+        </div>
+        <br/>
+
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Optical Simulation</h2>
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+            We simulate how surface of Gelsight deform when interact with different things. The result is almost the same as real world.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="opt-column">
+            <img src="./static/images/optical-sim.png"
+                 class="interpolation-image-opt"
+                 alt="Surface Image Simulation"/>
+            <p class="is-bold">Surface Image Simulation</p>
+          </div>
+        </div>
+        <br/>
+
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Sim2real of Contact-rich Manipulation Tasks</h2>
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+            We apply trained trajectories of contact-rich manipulation tasks like surface following and box openning in real world.
+          </p>
+        </div>
+        <section class="middle-section">
+          <div class="container is-max-desktop">
+            <div class="upper-section-body">
+                <!-- Surface Following GIF -->
+                <div class="middle-img-container">
+                    <img src="./static/gifs/277_1700264464.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Surface Following</p>
+                </div>
+        
+                <!-- Box Opening GIF -->
+                <div class="middle-img-container">
+                    <img src="./static/gifs/278_1700264468.gif" class="interpolation-image-upper" alt="Box Opening">
+                    <p class="is-bold">Box Opening</p>
+                </div>
+            </div>
+          </div>
+        </section>
+        <br/>
+
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Sim2real of Grasping Tasks</h2>
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+            We apply our trained adaptive grasping policy in real world. We compare the result to forceful grasp and light grasp. 
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <section class="middle-section">
+ 
+            <div class="container is-max-desktop">
+              
+              <div class="core-section-body">
+                  <!-- Surface Following GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/hard_grasp.gif" class="interpolation-image-upper" alt="Surface Following">
+                      <p class="is-bold">Forceful grasp</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/contact_grasp.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Light grasp</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/good_grasp.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Adaptive policy</p>
+                  </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <br/>
+
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">RL & CMA-ES Trained Results</h2>
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+            We visualize trained results of RL algorithms(PPO and SAC) and CME-ES here to show their failure modes.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <section class="middle-section">
+ 
+            <div class="container is-max-desktop">
+              
+              <div class="middle-section-body">
+                  <!-- Surface Following GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/aaa_surface_follow_ppo_24.gif" class="interpolation-image-upper" alt="Surface Following">
+                      <p class="is-bold">Surface Following (PPO)</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/aaa_surface_follow_sac_24.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Surface Following (SAC)</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/aaa_surface_follow_ppo_24.gif" class="interpolation-image-upper" alt="Surface Following">
+                    <p class="is-bold">Surface Following (CMA-ES)</p>
+                  </div>
+          
+                  <!-- Box Opening GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/aaa_box_open_ppo_24.gif" class="interpolation-image-upper" alt="Box Opening">
+                      <p class="is-bold">Box Opening (PPO)</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/aaa_box_open_sac_24.gif" class="interpolation-image-upper" alt="Box Opening">
+                    <p class="is-bold">Box Opening (SAC)</p>
+                </div>
+                <div class="middle-img-container">
+                  <img src="./static/gifs/cmaes_box_24.gif" class="interpolation-image-upper" alt="Box Opening">
+                  <p class="is-bold">Box Opening (CMA-ES)</p>
+              </div>
+          
+                  <!-- Cable Manipulation GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/aaa_cable_manip_ppo_24.gif" class="interpolation-image-upper" alt="Cable Manipulation">
+                      <p class="is-bold">Cable Manipulation (PPO)</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/aaa_cable_manip_sac_24.gif" class="interpolation-image-upper" alt="Cable Manipulation">
+                    <p class="is-bold">Cable Manipulation (SAC)</p>
+                </div>
+                <div class="middle-img-container">
+                  <img src="./static/gifs/cmaes_cable_24.gif" class="interpolation-image-upper" alt="Cable Manipulation">
+                  <p class="is-bold">Cable Manipulation (CMA-ES)</p>
+              </div>
+          
+                  <!-- Object Reposing GIF -->
+                  <div class="middle-img-container-lower">
+                      <img src="./static/gifs/aaa_repose_obj_ppo_24.gif" class="interpolation-image-upper" alt="Object reposing">
+                      <p class="is-bold">Object reposing (PPO)</p>
+                  </div>
+                  <div class="middle-img-container-lower">
+                    <img src="./static/gifs/aaa_repose_obj_sac_24.gif" class="interpolation-image-upper" alt="Object reposing">
+                    <p class="is-bold">Object reposing (SAC)</p>
+                </div>
+                <div class="middle-img-container-lower">
+                  <img src="./static/gifs/cmaes_repose_24.gif" class="interpolation-image-upper" alt="Object reposing">
+                  <p class="is-bold">Object reposing (CMA-ES)</p>
+              </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <br/>
+
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
