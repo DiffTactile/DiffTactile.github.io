@@ -58,12 +58,21 @@
     margin-bottom: 20px;  /* 增加底部外边距，确保文本有足够空间 */
     overflow: visible;    /* 确保内容不会被裁剪 */
 }
+
+.core-img-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 80px;  /* 增加底部外边距，确保文本有足够空间 */
+    overflow: visible;    /* 确保内容不会被裁剪 */
+}
 .middle-img-container-lower {
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 90px;  /* 增加底部外边距，确保文本有足够空间 */
+    margin-bottom: 80px;  /* 增加底部外边距，确保文本有足够空间 */
     overflow: visible;    /* 确保内容不会被裁剪 */
 }
 
