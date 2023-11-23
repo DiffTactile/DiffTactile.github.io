@@ -250,6 +250,47 @@
             </div>
           </section>
         </div>
+
+
+        <div class="content has-text-justified">
+          <p>
+            Real-world box opening with trajectories optimized with different system identification settings.  We use different Young's modulus E values (0.30e3, 0.66e3, 1.00e4, 2.00e4, 4.00e4 from left to right, while E = 0.37e3 from our system identificaiton) to optimzed trajectries in simulaition, and show that when E becomes far from our system id result, the optimized trajectory fails to directly transfer to the real world.
+          </p>
+        </div>
+        <!-- Interpolating. -->
+
+        <div class="columns is-vcentered interpolation-panel">
+          <section class="middle-section">
+ 
+            <div class="container is-max-desktop">
+              
+              <div class="newnew-section-body">
+                  <!-- Surface Following GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/3000.gif" class="interpolation-image-upper" alt="Surface Following">
+                      <p class="is-bold">E=0.30e3</p>
+                  </div>
+          
+                  <!-- Box Opening GIF -->
+                  <div class="middle-img-container">
+                      <img src="./static/gifs/6682.gif" class="interpolation-image-upper" alt="Box Opening">
+                      <p class="is-bold">E=0.66e3</p>
+                  </div>
+                  <div class="middle-img-container">
+                    <img src="./static/gifs/10000.gif" class="interpolation-image-upper" alt="Box Opening">
+                    <p class="is-bold">E=1.00e4</p>
+                </div>
+                <div class="middle-img-container">
+                  <img src="./static/gifs/40000.gif" class="interpolation-image-upper" alt="Box Opening">
+                  <p class="is-bold">E=4.00e4 (failed)</p>
+              </div>
+
+          
+ 
+              </div>
+            </div>
+          </section>
+        </div>
         <br/>
 
 

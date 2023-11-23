@@ -43,6 +43,13 @@
     justify-content: center;
 }
 
+.newnew-section-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2%;  /* 这个值也可以根据需要调整 */
+    justify-content: center;
+}
+
 .core-section-body {
     display: grid;
     grid-template-columns: 1fr;
