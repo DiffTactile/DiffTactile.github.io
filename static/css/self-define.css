@@ -120,3 +120,21 @@
     height: auto;    /* 保持图片的原始纵横比 */
     margin-bottom: 10px; /* 如果需要，给图片和文字之间添加一些空间 */
 }
+
+.gifs-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .gif-item {
+    flex: 1;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .gif-item img {
+    width: 100%;
+    max-width: 300px; /* Adjust this value based on your layout */
+  }
+  

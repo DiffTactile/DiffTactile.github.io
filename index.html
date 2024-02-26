@@ -54,12 +54,22 @@
           <h1 class="title is-1 publication-title">DiffTactile: A Physics-based Differentiable Tactile Simulator for Contact-rich Robotic Manipulation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Anonymous authors</span>
+            <a href="https://si-lynnn.github.io/">Zilin Si*</a>, 
+            <a href="https://www.gu-zhang.com/">Gu Zhang*</a>, 
+            <a href="https://www.qingweiben.com/">Qingwei Ben*</a>, 
+            <a href="https://www.csail.mit.edu/person/brandon-romero">Branden Romero</a>, 
+            <a href="https://www.zhou-xian.com/">Zhou Xian</a>, 
+            <a href="https://chaoliu.tech/">Chao Liu</a>, 
+            <a href="https://people.csail.mit.edu/ganchuang/">Chuang Gan</a>
+            </span>
           </div>
-          
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Under review at ICLR 2024</span>
+              * Authors with equal contribution.</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Accepted by ICLR 2024</span>
           </div>
 
           <div class="column has-text-centered">
@@ -251,35 +261,7 @@
           </section>
         </div>
 
-
-        <div class="content has-text-justified">
-          <p>
-            Real-world box opening with the trajectories optimized in simulation from our system idenfied parameters (a success) and baseline parameters (a failure).
-          </p>
-        </div>
         <!-- Interpolating. -->
-
-        <div class="columns is-vcentered interpolation-panel">
-          <section class="middle-section">
- 
-            <div class="container is-max-desktop">
-              
-              <div class="upper-section-body">
-                  <!-- Surface Following GIF -->
-                  <div class="middle-img-container">
-                      <img src="./static/gifs/278_1700264468.gif" class="interpolation-image-upper" alt="Surface Following">
-                      <p class="is-bold">E=0.37e3 (SysID)</p>
-                  </div>
-                <div class="middle-img-container">
-                  <img src="./static/gifs/40000.gif" class="interpolation-image-upper" alt="Box Opening">
-                  <p class="is-bold">E=4.00e4 (failed)</p>
-              </div>
-
-          
- 
-              </div>
-            </div>
-          </section>
         </div>
         <br/>
 
@@ -388,27 +370,28 @@
         </div>
         <div class="columns is-vcentered interpolation-panel">
           <section class="middle-section">
- 
             <div class="container is-max-desktop">
-              
               <div class="core-section-body">
-                  <!-- Surface Following GIF -->
-                  <div class="middle-img-container">
-                      <img src="./static/gifs/hard_grasp.gif" class="interpolation-image-upper" alt="Surface Following">
-                      <p class="is-bold">Forceful grasp</p>
+                <!-- GIFs Container -->
+                <div class="gifs-container">
+                  <div class="gif-item">
+                    <img src="./static/gifs/hard_grasp.gif" alt="Forceful grasp">
+                    <p class="is-bold">Forceful grasp</p>
                   </div>
-                  <div class="middle-img-container">
-                    <img src="./static/gifs/contact_grasp.gif" class="interpolation-image-upper" alt="Surface Following">
+                  <div class="gif-item">
+                    <img src="./static/gifs/contact_grasp.gif" alt="Light grasp">
                     <p class="is-bold">Light grasp</p>
                   </div>
-                  <div class="core-img-container">
-                    <img src="./static/gifs/good_grasp.gif" class="interpolation-image-upper" alt="Surface Following">
+                  <div class="gif-item">
+                    <img src="./static/gifs/good_grasp.gif" alt="Adaptive policy">
                     <p class="is-bold">Adaptive policy</p>
                   </div>
+                </div>
               </div>
             </div>
           </section>
         </div>
+        
         <br/>
 
 
