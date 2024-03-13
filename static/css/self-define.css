@@ -5,7 +5,7 @@
 
 
 .upper-section {
-    width: 60%;               /* 设置宽度为页面的70% */
+    width: 100%;               /* 设置宽度为页面的70% */
     margin: auto;           /* 将section居中 */
     background-color: #f5f5f5;  /* 浅灰色背景 */
     border-radius: 15px;        /* 圆形边框 */
@@ -26,6 +26,21 @@
     flex-direction: column;          /* 设置flex的方向为列 */
     justify-content: center; 
 }
+
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%; /* Aspect ratio */
+    position: relative;
+    height: 0;
+  }
+  
+  .video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
 
 .middle-section {
     width: 100%;
